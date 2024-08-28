@@ -1,0 +1,64 @@
+NSERT INTO genre_tb (GenreName) VALUES
+('Action'),
+('Drama'),
+('Comedy');
+
+INSERT INTO actors_tb (Firstname, Lastname, Nationality, EmailAddress, gender) VALUES
+('Leonardo', 'DiCaprio', 'American', 'leo.dicaprio@example.com', 'M'),
+('Marlon', 'Brando', 'American', 'marlon.brando@example.com', 'M'),
+('Bong', 'Joon', 'Korean', 'bong.joon@example.com', 'M'),
+('Christian', 'Bale', 'British', 'christian.bale@example.com', 'M'),
+('Audrey', 'Tautou', 'French', 'audrey.tautou@example.com', 'F'),
+('Al', 'Pacino', 'American', 'al.pacino@example.com', 'M'),
+('Anne', 'Hathaway', 'American', 'anne.hathaway@example.com', 'F'),
+('Morgan', 'Freeman', 'American', 'morgan.freeman@example.com', 'M'),
+('Emma', 'Watson', 'British', 'emma.watson@example.com', 'F'),
+('Tom', 'Hardy', 'British', 'tom.hardy@example.com', 'M');
+
+INSERT INTO directors_tb (Firstname, Lastname, Nationality, EmailAddress, gender) VALUES
+('Christopher', 'Nolan', 'British-American', 'chris.nolan@example.com', 'M'),
+('Francis', 'Coppola', 'American', 'francis.coppola@example.com', 'M'),
+('Bong', 'Joon-ho', 'Korean', 'bong.joonho@example.com', 'M'),
+('James', 'Cameron', 'Canadian', 'james.cameron@example.com', 'M'),
+('Patty', 'Jenkins', 'American', 'patty.jenkins@example.com', 'F'),
+('Jean-Pierre', 'Jeunet', 'French', 'jean.jeunet@example.com', 'M');
+
+INSERT INTO ratings_tb (RatingNumber, sauerce) VALUES
+(4.5, 'IMDb'),
+(3.8, 'Rotten'),
+(4.0, 'Metacritic');
+
+INSERT into language_tb (languageName) values ('english');
+INSERT into language_tb (languageName) values ('spanish');
+INSERT into language_tb (languageName) values ('italiano');
+
+INSERT INTO crew_tb (CrewID) VALUES
+(1),
+(2),
+(3);
+
+INSERT INTO Crew_Actors (CrewID, ActorsID) VALUES
+(1, 1), -- Robert Downey in Avengers
+(1, 5), -- Scarlett Johansson in Avengers
+(2, 6), -- Robert Downey in Titanic (for example)
+(3, 4), -- Chris Hemsworth in Inception
+(3, 2), -- Chris Hemsworth in Inception
+(2, 7); -- Chris Hemsworth in Inception
+
+
+
+INSERT INTO Crew_Directors (CrewID, DirectorsID) VALUES
+(1, 1), -- Steven Spielberg directed Avengers
+(2, 1), -- James Cameron directed Titanic
+(3, 2), -- Patty Jenkins directed Inception
+(3, 1); -- Patty Jenkins directed Inception
+INSERT INTO movies_tb (crewID, languageID, movieTitle, releaseYear, description, ratings, movieLength) VALUES
+(1, 1, 'Avatar', '2009', 'Sci-fi epic movie', 2, 162),
+(2, 2, 'The Godfather', '1972', 'Crime drama masterpiece', 3, 175),
+(3, 3, 'Parasite', '2019', 'Thriller and social commentary', 1, 132),
+(2, 1, 'The Dark Knight', '2008', 'Superhero crime thriller', 1, 152),
+(1, 1, 'Avengers', '2012', 'Superhero action movie', 1, 143),
+(2, 2, 'Titanic', '1997', 'Romantic drama', 2, 195),
+(3, 3, 'Inception', '2010', 'Sci-fi thriller', 3, 148),
+(1, 3, 'Amélie', '2001', 'Romantic comedy-drama', 2, 122);
+

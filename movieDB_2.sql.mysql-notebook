@@ -1,0 +1,867 @@
+{
+    "type": "MySQLNotebook",
+    "version": "1.0",
+    "caption": "DB Notebook",
+    "content": "\\about\nuse movieDB;\nCREATE TABLE crew_tb (\n    CrewID INT(10) AUTO_INCREMENT PRIMARY KEY,\n    ActorsID int(10),\n    DirectorsID int(10),\n    MovieID int(10)\n);\nCREATE TABLE movies_tb(\n    movieID INT AUTO_INCREMENT PRIMARY KEY,\n    crewID INT(10),\n    languageID int(10),\n    movieTitle varchar(20) NOT NULL,\n    releaseYear varchar(5),\n    decription varchar(30),\n    ratings FLOAT(1,1),\n    movieLength INT(10),\n    CONSTRAINT fk_crewtb_movietb FOREIGN KEY (crewID) REFERENCES crew_tb(CrewID),\n    CONSTRAINT fk_language_movies FOREIGN KEY (languageID) REFERENCES language_tb(LanguageID),\n    CONSTRAINT fk_ratingsTB_moviesTB FOREIGN KEY(ratings) REFERENCES ratings_tb(RatingsID)\n);\nCREATE TABLE language_tb (\n    LanguageID INT(10) AUTO_INCREMENT PRIMARY KEY,\n    MovieID INT(10)\n);\nCREATE TABLE ratings_tb (\n    RatingsID INT(10) AUTO_INCREMENT PRIMARY KEY,\n    RatingNumber FLOAT(1,1) ,\n    sauerce VARCHAR(10)\n);\n\nCREATE TABLE actors_tb (\n    ActorsID INT(10) AUTO_INCREMENT PRIMARY KEY,\n    Firstname VARCHAR(15),\n    Lastname VARCHAR(15),\n    Nationality VARCHAR(10),\n    EmailAddress VARCHAR(20) UNIQUE,\n    gender VARCHAR(2)\n);\nCREATE TABLE directors_tb (\n    DirectorsID INT(10) AUTO_INCREMENT PRIMARY KEY,\n    Firstname VARCHAR(15),\n    Lastname VARCHAR(15),\n    Nationality VARCHAR(10),\n    EmailAddress VARCHAR(20) UNIQUE,\n    gender VARCHAR(2)\n);\nCREATE TABLE genre_tb (\n    GenreID INT(10) AUTO_INCREMENT PRIMARY KEY,\n    GenreName varchar(20) \n);\nCREATE TABLE Movie_Genre (\n    MovieID INT(10),\n    GenreID INT(10),\n    CONSTRAINT fk_movie_genre FOREIGN KEY (MovieID) REFERENCES movie_tb(movieID),\n    CONSTRAINT fk_genre_movie FOREIGN KEY (GenreID) REFERENCES genre_tb(GenreID)\n);\nCREATE TABLE Crew_Actors (\n    CrewID INT(10),\n    ActorsID INT(10),\n    CONSTRAINT fk_crewActors_crewTB FOREIGN KEY (CrewID) REFERENCES crew_tb(CrewID),\n    CONSTRAINT fk_crewActors_actorsTB FOREIGN KEY (ActorsID) REFERENCES actors_tb(ActorsID)\n);\nCREATE TABLE Crew_Directors (\n    CrewID INT(10),\n    DirectorsID INT(10),\n    CONSTRAINT fk_crewDirectors_crewTB FOREIGN KEY (CrewID) REFERENCES crew_tb(CrewID),\n    CONSTRAINT fk_crewDirectors_DirectorsTB FOREIGN KEY (DirectorsID) REFERENCES directors_tb(DirectorsID)\n);\n\nshow TABLES;\nCREATE TABLE movies_tb(\n    movieID INT AUTO_INCREMENT PRIMARY KEY,\n    crewID INT(10),\n    languageID int(10),\n    movieTitle varchar(20) NOT NULL,\n    releaseYear varchar(5),\n    decription varchar(30),\n    ratingsID INT(10),\n    movieLength INT(10),\n    CONSTRAINT fk_crewtb_movietb FOREIGN KEY (crewID) REFERENCES crew_tb(CrewID),\n    CONSTRAINT fk_language_movies FOREIGN KEY (languageID) REFERENCES language_tb(LanguageID),\n    CONSTRAINT fk_ratingsTB_moviesTB FOREIGN KEY(ratingsid) REFERENCES ratings_tb(RatingsID)\n);\nCREATE TABLE Movie_Genre (\n    MovieID INT(10),\n    GenreID INT(10),\n    CONSTRAINT fk_movie_genre FOREIGN KEY (MovieID) REFERENCES movies_tb_tb(movieID),\n    CONSTRAINT fk_genre_movie FOREIGN KEY (GenreID) REFERENCES genre_tb(GenreID)\n);;\nSHOW TABLES;\nCREATE TABLE Movie_Genre (\n    MovieID INT(10),\n    GenreID INT(10),\n    CONSTRAINT fk_movie_genre FOREIGN KEY (MovieID) REFERENCES movies_tb(movieID),\n    CONSTRAINT fk_genre_movie FOREIGN KEY (GenreID) REFERENCES genre_tb(GenreID)\n);\nSELECT * FROM USER_CONSTRAINTS;\nSELECT * FROM user_constraints;\nselect  TABLE_NAME, CONSTRAINT_TYPE , CONSTRAINT_NAME FROM information_schema.TABLE_CONSTRAINTS WHERE TABLE_SCHEMA\n = 'movieDB';\n",
+    "options": {
+        "tabSize": 4,
+        "indentSize": 4,
+        "insertSpaces": true,
+        "defaultEOL": "LF",
+        "trimAutoWhitespace": true
+    },
+    "viewState": {
+        "cursorState": [
+            {
+                "inSelectionMode": true,
+                "selectionStart": {
+                    "lineNumber": 101,
+                    "column": 14
+                },
+                "position": {
+                    "lineNumber": 100,
+                    "column": 1
+                }
+            }
+        ],
+        "viewState": {
+            "scrollLeft": 0,
+            "firstPosition": {
+                "lineNumber": 92,
+                "column": 1
+            },
+            "firstPositionDeltaTop": 39
+        },
+        "contributionsState": {
+            "editor.contrib.folding": {},
+            "editor.contrib.wordHighlighter": false
+        }
+    },
+    "contexts": [
+        {
+            "state": {
+                "start": 1,
+                "end": 1,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "content": "Welcome to the MySQL Shell - DB Notebook.\n\nPress Ctrl+Enter to execute the code block.\n\nExecute \\sql to switch to SQL, \\js to JavaScript and \\ts to TypeScript mode.\nExecute \\help or \\? for help;",
+                            "language": "ansi"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 6
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 2,
+                "end": 2,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 4,
+                            "index": 0,
+                            "resultId": "21f51ec2-0976-4f01-ff2f-13260cd88de8",
+                            "content": "OK, 0 records retrieved in 0.752ms"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 12
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 3,
+                "end": 70,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 0,
+                            "index": 0,
+                            "content": "MySQL Error (1050): Table 'crew_tb' already exists",
+                            "language": "ansi"
+                        },
+                        {
+                            "type": 0,
+                            "index": 1,
+                            "content": "MySQL Error (3780): Referencing column 'ratings' and referenced column 'RatingsID' in foreign key constraint 'fk_ratingsTB_moviesTB' are incompatible.",
+                            "language": "ansi"
+                        },
+                        {
+                            "type": 0,
+                            "index": 2,
+                            "content": "MySQL Error (1050): Table 'language_tb' already exists",
+                            "language": "ansi"
+                        },
+                        {
+                            "type": 0,
+                            "index": 3,
+                            "content": "MySQL Error (1050): Table 'ratings_tb' already exists",
+                            "language": "ansi"
+                        },
+                        {
+                            "type": 0,
+                            "index": 4,
+                            "content": "MySQL Error (1050): Table 'actors_tb' already exists",
+                            "language": "ansi"
+                        },
+                        {
+                            "type": 0,
+                            "index": 5,
+                            "content": "MySQL Error (1050): Table 'directors_tb' already exists",
+                            "language": "ansi"
+                        },
+                        {
+                            "type": 0,
+                            "index": 6,
+                            "content": "MySQL Error (1050): Table 'genre_tb' already exists",
+                            "language": "ansi"
+                        },
+                        {
+                            "type": 0,
+                            "index": 7,
+                            "content": "MySQL Error (1824): Failed to open the referenced table 'movie_tb'",
+                            "language": "ansi"
+                        },
+                        {
+                            "type": 0,
+                            "index": 8,
+                            "content": "MySQL Error (1050): Table 'Crew_Actors' already exists",
+                            "language": "ansi"
+                        },
+                        {
+                            "type": 0,
+                            "index": 9,
+                            "content": "MySQL Error (1050): Table 'Crew_Directors' already exists",
+                            "language": "ansi"
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": ""
+                    }
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 139
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 139,
+                            "length": 525
+                        },
+                        "contentStart": 140,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 664,
+                            "length": 101
+                        },
+                        "contentStart": 665,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 765,
+                            "length": 133
+                        },
+                        "contentStart": 766,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 898,
+                            "length": 219
+                        },
+                        "contentStart": 900,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 1117,
+                            "length": 224
+                        },
+                        "contentStart": 1118,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 1341,
+                            "length": 102
+                        },
+                        "contentStart": 1342,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 1443,
+                            "length": 235
+                        },
+                        "contentStart": 1444,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 1678,
+                            "length": 249
+                        },
+                        "contentStart": 1679,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 1927,
+                            "length": 273
+                        },
+                        "contentStart": 1928,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 2200,
+                            "length": 1
+                        },
+                        "contentStart": 2199,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 71,
+                "end": 71,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "3decadee-d1bc-4d18-c288-0493c5bf173f"
+                    ]
+                },
+                "currentHeight": 36,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 12
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "2",
+                    "resultId": "3decadee-d1bc-4d18-c288-0493c5bf173f",
+                    "rows": [
+                        {
+                            "0": "Crew_Actors"
+                        },
+                        {
+                            "0": "Crew_Directors"
+                        },
+                        {
+                            "0": "actors_tb"
+                        },
+                        {
+                            "0": "crew_tb"
+                        },
+                        {
+                            "0": "directors_tb"
+                        },
+                        {
+                            "0": "genre_tb"
+                        },
+                        {
+                            "0": "language_tb"
+                        },
+                        {
+                            "0": "ratings_tb"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "Tables_in_movieDB",
+                            "field": "0",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 8 records retrieved in 2.619ms"
+                    },
+                    "totalRowCount": 8,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "show TABLES",
+                    "updatable": false
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 72,
+                "end": 84,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 4,
+                            "index": 0,
+                            "resultId": "3ba66af9-2256-4cd5-c174-f3390616d2fb",
+                            "content": "OK, 0 records retrieved in 61.917ms"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 525
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 85,
+                "end": 90,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 0,
+                            "index": 0,
+                            "content": "MySQL Error (1824): Failed to open the referenced table 'movies_tb_tb'",
+                            "language": "ansi"
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": ""
+                    }
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 238
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 238,
+                            "length": 1
+                        },
+                        "contentStart": 238,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 91,
+                "end": 91,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "5ff685bc-78ee-494e-9e2f-79796702ecc8"
+                    ]
+                },
+                "currentHeight": 289,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 12
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "2",
+                    "resultId": "5ff685bc-78ee-494e-9e2f-79796702ecc8",
+                    "rows": [
+                        {
+                            "0": "Crew_Actors"
+                        },
+                        {
+                            "0": "Crew_Directors"
+                        },
+                        {
+                            "0": "actors_tb"
+                        },
+                        {
+                            "0": "crew_tb"
+                        },
+                        {
+                            "0": "directors_tb"
+                        },
+                        {
+                            "0": "genre_tb"
+                        },
+                        {
+                            "0": "language_tb"
+                        },
+                        {
+                            "0": "movies_tb"
+                        },
+                        {
+                            "0": "ratings_tb"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "Tables_in_movieDB",
+                            "field": "0",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 9 records retrieved in 2.109ms"
+                    },
+                    "totalRowCount": 9,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "SHOW TABLES",
+                    "updatable": false
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 92,
+                "end": 97,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 4,
+                            "index": 0,
+                            "resultId": "058d0dd8-040e-4c3d-94a4-2b14e4a47ffe",
+                            "content": "OK, 0 records retrieved in 41.856ms"
+                        },
+                        {
+                            "type": 0,
+                            "index": 1,
+                            "content": "MySQL Error (1065): Query was empty",
+                            "language": "ansi"
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": ""
+                    }
+                },
+                "currentHeight": 45.328125,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 235
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 235,
+                            "length": 0
+                        },
+                        "contentStart": 235,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 98,
+                "end": 98,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 0,
+                            "index": 0,
+                            "content": "MySQL Error (1146): Table 'movieDB.USER_CONSTRAINTS' doesn't exist",
+                            "language": "ansi"
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": ""
+                    }
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 31
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 99,
+                "end": 99,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 0,
+                            "index": 0,
+                            "content": "MySQL Error (1146): Table 'movieDB.user_constraints' doesn't exist",
+                            "language": "ansi"
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": ""
+                    }
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 31
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 100,
+                "end": 101,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "b9274149-118e-4ae7-9012-d41bf36cb93e"
+                    ]
+                },
+                "currentHeight": 36,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 128
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "2",
+                    "resultId": "b9274149-118e-4ae7-9012-d41bf36cb93e",
+                    "rows": [
+                        {
+                            "0": "Crew_Actors",
+                            "1": "FOREIGN KEY",
+                            "2": "fk_crewActors_actorsTB"
+                        },
+                        {
+                            "0": "Crew_Actors",
+                            "1": "FOREIGN KEY",
+                            "2": "fk_crewActors_crewTB"
+                        },
+                        {
+                            "0": "Crew_Directors",
+                            "1": "FOREIGN KEY",
+                            "2": "fk_crewDirectors_crewTB"
+                        },
+                        {
+                            "0": "Crew_Directors",
+                            "1": "FOREIGN KEY",
+                            "2": "fk_crewDirectors_DirectorsTB"
+                        },
+                        {
+                            "0": "Movie_Genre",
+                            "1": "FOREIGN KEY",
+                            "2": "fk_genre_movie"
+                        },
+                        {
+                            "0": "Movie_Genre",
+                            "1": "FOREIGN KEY",
+                            "2": "fk_movie_genre"
+                        },
+                        {
+                            "0": "actors_tb",
+                            "1": "UNIQUE",
+                            "2": "EmailAddress"
+                        },
+                        {
+                            "0": "actors_tb",
+                            "1": "PRIMARY KEY",
+                            "2": "PRIMARY"
+                        },
+                        {
+                            "0": "crew_tb",
+                            "1": "PRIMARY KEY",
+                            "2": "PRIMARY"
+                        },
+                        {
+                            "0": "directors_tb",
+                            "1": "UNIQUE",
+                            "2": "EmailAddress"
+                        },
+                        {
+                            "0": "directors_tb",
+                            "1": "PRIMARY KEY",
+                            "2": "PRIMARY"
+                        },
+                        {
+                            "0": "genre_tb",
+                            "1": "PRIMARY KEY",
+                            "2": "PRIMARY"
+                        },
+                        {
+                            "0": "language_tb",
+                            "1": "PRIMARY KEY",
+                            "2": "PRIMARY"
+                        },
+                        {
+                            "0": "movies_tb",
+                            "1": "PRIMARY KEY",
+                            "2": "PRIMARY"
+                        },
+                        {
+                            "0": "movies_tb",
+                            "1": "FOREIGN KEY",
+                            "2": "fk_crewtb_movietb"
+                        },
+                        {
+                            "0": "movies_tb",
+                            "1": "FOREIGN KEY",
+                            "2": "fk_language_movies"
+                        },
+                        {
+                            "0": "movies_tb",
+                            "1": "FOREIGN KEY",
+                            "2": "fk_ratingsTB_moviesTB"
+                        },
+                        {
+                            "0": "ratings_tb",
+                            "1": "PRIMARY KEY",
+                            "2": "PRIMARY"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "TABLE_NAME",
+                            "field": "0",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "CONSTRAINT_TYPE",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "CONSTRAINT_NAME",
+                            "field": "2",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 18 records retrieved in 1.465ms"
+                    },
+                    "totalRowCount": 18,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "select  TABLE_NAME, CONSTRAINT_TYPE , CONSTRAINT_NAME FROM information_schema.TABLE_CONSTRAINTS WHERE TABLE_SCHEMA\n = 'movieDB'",
+                    "updatable": false,
+                    "fullTableName": "information_schema.TABLE_CONSTRAINTS"
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 102,
+                "end": 102,
+                "language": "mysql",
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 0
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        }
+    ]
+}
